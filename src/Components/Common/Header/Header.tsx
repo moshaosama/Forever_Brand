@@ -2,9 +2,36 @@ import { NavLink } from "react-router";
 import { assets } from "../../../assets/frontend_assets/assets";
 import GlobalStyles from "../../../Styles/Global.module.css";
 import Style from "../Header/Header.module.css";
+import { useState } from "react";
+import MenuLinks from "../../Atoms/MenuLinks/MenuLinks";
+
+export const NavLinkLists = [
+  {
+    To: "",
+    Title: "Home",
+  },
+  {
+    To: "/collection",
+    Title: "Collections",
+  },
+  {
+    To: "/about",
+    Title: "About",
+  },
+  {
+    To: "/contact",
+    Title: "contact",
+  },
+];
+
 const Header = () => {
   const { container } = GlobalStyles;
   const { navLink } = Style;
+  const [activeMenu, setActiveMenu] = useState(true);
+
+  const handleClick = () => {
+    setActiveMenu(!activeMenu);
+  };
 
   const ImagesList = [
     {
@@ -18,25 +45,6 @@ const Header = () => {
     {
       src: assets.cart_icon,
       alt: "cart.png",
-    },
-  ];
-
-  const NavLinkLists = [
-    {
-      To: "",
-      Title: "Home",
-    },
-    {
-      To: "/collection",
-      Title: "Collections",
-    },
-    {
-      To: "/about",
-      Title: "About",
-    },
-    {
-      To: "/contact",
-      Title: "contact",
     },
   ];
 
@@ -79,7 +87,7 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-6 max-sm:gap-4">
           <ImageRender />
-          <div className="sm:hidden">
+          <div className="sm:hidden" onClick={handleClick}>
             <img
               src={assets.menu_icon}
               alt={"menu.png"}
@@ -88,6 +96,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <MenuLinks activeMenu={activeMenu} setActiveMenu={handleClick} />
       {/* <hr
         style={{ margin: "1pc 11pc", backgroundColor: "#eee", height: "-10px" }}
       /> */}
