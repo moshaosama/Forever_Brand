@@ -8,3 +8,10 @@
   font-weight: bold;
   font-size: 17px;
 }
+
+@media (max-width: 640px) {
+  /* أو أي حجم شاشة صغير تريده */
+  .Paragraph {
+    font-size: 13px;
+  }
+}

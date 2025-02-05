@@ -1,15 +1,13 @@
-import globalStyle from "../../../Styles/Global.module.css";
 import style from "../Footer/Footer.module.css";
 import { assets } from "../../../assets/frontend_assets/assets";
 const Footer = () => {
-  const { container } = globalStyle;
-  const { img, Text } = style;
+  const { img, Text, container } = style;
   return (
     <>
       <div className={container}>
         <div>
           <img src={assets.logo} alt="" className={img} />
-          <p style={{ width: "40pc" }}>
+          <p className="w-[45pc] max-sm:w-full">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vel
             dolor similique? Modi dolorum consequatur quibusdam consequuntur
             incidunt eveniet obcaecati illo. Nemo sunt dolores voluptatibus odio

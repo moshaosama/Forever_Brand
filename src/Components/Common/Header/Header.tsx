@@ -1,10 +1,10 @@
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 import { assets } from "../../../assets/frontend_assets/assets";
 import GlobalStyles from "../../../Styles/Global.module.css";
 import Style from "../Header/Header.module.css";
 const Header = () => {
   const { container } = GlobalStyles;
-  const { img, divLink, navLink } = Style;
+  const { navLink } = Style;
 
   const ImagesList = [
     {
@@ -68,13 +68,24 @@ const Header = () => {
   };
   return (
     <>
-      <div className={container}>
-        <img className={img} src={assets.logo} alt="logo.png" />
-        <div className={divLink}>
+      <div className={`${container}`}>
+        <img
+          className="w-[9%] max-sm:w-32 cursor-poiner"
+          src={assets.logo}
+          alt="logo.png"
+        />
+        <div className={`flex gap-8 max-sm:hidden`}>
           <NavLinkRender />
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "25px" }}>
+        <div className="flex items-center gap-6 max-sm:gap-4">
           <ImageRender />
+          <div className="sm:hidden">
+            <img
+              src={assets.menu_icon}
+              alt={"menu.png"}
+              style={{ width: "20px", height: "20px", cursor: "pointer" }}
+            />
+          </div>
         </div>
       </div>
       {/* <hr

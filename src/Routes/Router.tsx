@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "../Pages/Home";
-import NotFound from "../Pages/notFound";
-import MainLayout from "../Layouts/mainLayout";
 import Collections from "../Pages/Collections";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import Cart from "../Pages/Cart";
+import MainLayout from "../Layouts/MainLayout";
+import NotFound from "../Pages/NotFound";
 
 const RouterPages = () => {
   const routerPages = createBrowserRouter([

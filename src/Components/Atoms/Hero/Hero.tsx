@@ -18,13 +18,15 @@ const Hero = () => {
     <>
       <div className={container} style={{ border: "1px solid black" }}>
         {/* Left Hero Side */}
-        <div className="flex justify-between items-center w-[100%]">
-          <div className="w-1/2 text-start flex flex-col items-center text-[rgba(65,65,65,1)]">
+        <div className="flex max-sm:flex-col justify-between items-center w-[100%]">
+          <div className="w-1/2 max-sm:p-7 max-sm:w-full  flex flex-col items-center text-[rgba(65,65,65,1)]">
             <div className={divText}>
               <HR />
               <p className={Paragraph}>OUR BESTSELLERS</p>
             </div>
-            <h1 className="font-semibold text-5xl">Latest Arrivals</h1>
+            <h1 className="font-semibold text-5xl max-sm:text-3xl">
+              Latest Arrivals
+            </h1>
             <div className={divText}>
               <p className={Paragraph}>SHOP NOW</p>
               <HR />

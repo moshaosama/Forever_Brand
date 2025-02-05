@@ -4,3 +4,10 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media (max-width: 640px) {
+  /* أو أي حجم شاشة صغير تريده */
+  .container {
+    margin: 1pc;
+  }
+}
