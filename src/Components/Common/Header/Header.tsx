@@ -27,7 +27,7 @@ export const NavLinkLists = [
 const Header = () => {
   const { container } = GlobalStyles;
   const { navLink } = Style;
-  const [activeMenu, setActiveMenu] = useState(true);
+  const [activeMenu, setActiveMenu] = useState(false);
 
   const handleClick = () => {
     setActiveMenu(!activeMenu);
