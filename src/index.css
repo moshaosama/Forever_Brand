@@ -1,0 +1,12 @@
+@import "tailwindcss";
+* {
+  /* font-family: "Outfit", serif; */
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+a.active {
+  text-decoration: underline;
+  font-weight: bold;
+}

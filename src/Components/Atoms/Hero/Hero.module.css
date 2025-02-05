@@ -1,0 +1,10 @@
+.divText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Paragraph {
+  font-weight: bold;
+  font-size: 17px;
+}
