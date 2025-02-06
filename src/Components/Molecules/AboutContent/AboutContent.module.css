@@ -1,0 +1,14 @@
+.Img {
+  width: 30%;
+}
+.about_container {
+  justify-content: start !important;
+  gap: 50px !important;
+}
+
+@media (max-width: 640px) {
+  /* أو أي حجم شاشة صغير تريده */
+  .Img {
+    width: 100%;
+  }
+}

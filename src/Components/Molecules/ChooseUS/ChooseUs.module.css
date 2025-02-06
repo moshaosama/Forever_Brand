@@ -1,0 +1,25 @@
+.Choose_Container {
+  display: flex;
+  justify-content: start;
+  margin-top: 100px;
+}
+
+.Choose_Content {
+  display: flex;
+  justify-content: start;
+}
+
+.Choose_Card {
+  border: 1px solid rgb(219 219 219);
+  padding: 3.25rem 3.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  /* أو أي حجم شاشة صغير تريده */
+  .Choose_Content {
+    flex-direction: column;
+  }
+}

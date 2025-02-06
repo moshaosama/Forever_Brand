@@ -1,7 +1,13 @@
+import AboutContent from "../Components/Molecules/AboutContent/AboutContent";
+import ChooseUs from "../Components/Molecules/ChooseUS/ChooseUs";
+import Subscription from "../Components/Molecules/Subscription/Subscription";
+
 const About = () => {
   return (
     <>
-      <h1>About</h1>
+      <AboutContent />
+      <ChooseUs />
+      <Subscription />
     </>
   );
 };
