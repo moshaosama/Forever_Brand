@@ -3,7 +3,7 @@ import { assets } from "../../../assets/frontend_assets/assets";
 import GlobalStyles from "../../../Styles/Global.module.css";
 import Style from "../Header/Header.module.css";
 import { useState } from "react";
-import MenuLinks from "../../Atoms/MenuLinks/MenuLinks";
+import MenuLinks from "../../Molecules/MenuLinks/MenuLinks";
 
 export const NavLinkLists = [
   {
@@ -97,9 +97,14 @@ const Header = () => {
         </div>
       </div>
       <MenuLinks activeMenu={activeMenu} setActiveMenu={handleClick} />
-      {/* <hr
-        style={{ margin: "1pc 11pc", backgroundColor: "#eee", height: "-10px" }}
-      /> */}
+
+      <hr
+        style={{
+          margin: "1pc 11pc",
+          backgroundColor: "#eee",
+          height: "-10px",
+        }}
+      />
     </>
   );
 };

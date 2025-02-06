@@ -1,26 +1,17 @@
-.img {
-  width: 20%;
-}
-.Text {
-  font-family: Outfit;
-  font-size: 24px;
-}
 .container {
-  margin: 7pc 11pc;
+  margin: 8pc 13pc;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 @media (max-width: 640px) {
+  /* أو أي حجم شاشة صغير تريده */
   .container {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    margin: 6pc 1pc;
-    gap: 20px;
-  }
-  .img {
-    width: 40%;
+    items-align: center;
+    gap: 80px;
+    margin: 5pc 0pc;
   }
 }

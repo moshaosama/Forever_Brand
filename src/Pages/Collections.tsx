@@ -1,7 +1,13 @@
+import AllCollection from "../Components/Molecules/AllCollections/AllCollection";
+import Filtering from "../Components/Molecules/Filtering/Filtering";
+
 const Collections = () => {
   return (
     <>
-      <h1>Collections</h1>
+      <div className="flex items-start max-sm:flex-col">
+        <Filtering />
+        <AllCollection />
+      </div>
     </>
   );
 };

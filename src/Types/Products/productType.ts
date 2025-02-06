@@ -13,5 +13,6 @@ export interface productType {
 [];
 
 export interface productItemProps {
+  StartSLice: number;
   EndSlice: number;
 }

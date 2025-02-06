@@ -7,10 +7,10 @@ import {
 import { RootState } from "../../../Store/globalStore/store";
 import style from "./ProductItem.module.css";
 
-const ProductItem = ({ EndSlice }: productItemProps) => {
+const ProductItem = ({ EndSlice, StartSLice }: productItemProps) => {
   const data = useSelector((state: RootState) => state.products);
   const [products, setProduct] = useState<productType[]>([]);
-  useEffect(() => setProduct(data.data.slice(0, EndSlice)), []);
+  useEffect(() => setProduct(data.data.slice(StartSLice, EndSlice)), []);
   const { product } = style;
   return (
     <>
@@ -18,7 +18,7 @@ const ProductItem = ({ EndSlice }: productItemProps) => {
         {products.map((el, index) => {
           return (
             <>
-              <div className="bg-[#eee] rounded-lg" key={index}>
+              <div className="bg-[#f8f8f8] rounded-lg" key={index}>
                 <div className="rounded-lg cursor-pointer overflow-hidden">
                   <img
                     src={el.image[0]}
@@ -26,7 +26,7 @@ const ProductItem = ({ EndSlice }: productItemProps) => {
                     className="transition-all duration-500 transform hover:scale-110"
                   />
                 </div>
-                <div className="text-sm my-2">
+                <div className="text-sm my-2 mx-2">
                   <p key={index}>{el.name}</p>
                   <p>$ {el.price}</p>
                 </div>

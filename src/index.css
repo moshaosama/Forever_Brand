@@ -18,3 +18,7 @@ a.active {
     text-decoration: none;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}

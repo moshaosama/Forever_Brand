@@ -1,14 +1,9 @@
 import globalStyle from "../../../Styles/Global.module.css";
 import { assets } from "../../../assets/frontend_assets/assets";
+import HR from "../../Atoms/HR/HR";
 import style from "../Hero/Hero.module.css";
 
-export const HR = () => {
-  return (
-    <>
-      <p className="w-12 h-[2px] bg-[rgba(65,65,65,1)] rounded-full text-start"></p>
-    </>
-  );
-};
+
 
 const Hero = () => {
   const { container } = globalStyle;
