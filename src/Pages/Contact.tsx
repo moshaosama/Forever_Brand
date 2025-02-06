@@ -1,7 +1,11 @@
+import ContactContent from "../Components/Molecules/ContactContent/ContactContent";
+import Subscription from "../Components/Molecules/Subscription/Subscription";
+
 const Contact = () => {
   return (
     <>
-      <h1>Contact</h1>
+      <ContactContent />
+      <Subscription />
     </>
   );
 };

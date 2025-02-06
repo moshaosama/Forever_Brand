@@ -1,0 +1,37 @@
+.Contact_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 4pc 0pc;
+}
+
+.Header {
+  font-size: 1.3pc;
+  font-weight: bold;
+  color: oklch(0.446 0.03 256.802);
+}
+
+.Paragraph {
+  color: oklch(0.707 0.022 261.325);
+  font-weight: 500;
+}
+
+.Buttom {
+  cursor: pointer;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: 600;
+  width: 40%;
+  padding: 12px;
+}
+.Buttom:hover {
+  background-color: black;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .Contact_container {
+    flex-direction: column;
+  }
+}
