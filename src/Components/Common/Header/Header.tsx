@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { assets } from "../../../assets/frontend_assets/assets";
 import GlobalStyles from "../../../Styles/Global.module.css";
 import Style from "../Header/Header.module.css";
@@ -77,11 +77,13 @@ const Header = () => {
   return (
     <>
       <div className={`${container}`}>
-        <img
-          className="w-[9%] max-sm:w-32 cursor-poiner"
-          src={assets.logo}
-          alt="logo.png"
-        />
+        <Link to={""}>
+          <img
+            className="w-[9%] max-sm:w-32 cursor-poiner"
+            src={assets.logo}
+            alt="logo.png"
+          />
+        </Link>
         <div className={`flex gap-8 max-sm:hidden`}>
           <NavLinkRender />
         </div>
