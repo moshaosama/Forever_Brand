@@ -1,0 +1,27 @@
+.TextContainer {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-size: 15px;
+  margin-top: -10px;
+}
+
+.Btn {
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: black;
+
+  &:hover {
+    background-color: #1f2f2f;
+  }
+}
+
+.Text {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

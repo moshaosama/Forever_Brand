@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { products } from "../../assets/frontend_assets/assets";
+import { products } from "../../../assets/frontend_assets/assets";
 
 const initialState = {
   data: products,

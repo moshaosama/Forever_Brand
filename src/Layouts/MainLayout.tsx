@@ -4,12 +4,13 @@ import Footer from "../Components/Common/Footer/Footer";
 import CopyRight from "../Components/Common/CopyRight/CopyRight";
 
 const MainLayout = () => {
+  const path = window.location.pathname;
   return (
     <>
-      <Header />
+      {path !== "/login" ? <Header /> : null}
       <Outlet />
-      <Footer />
-      <CopyRight />
+      {path !== "/login" ? <Footer /> : null}
+      {path !== "/login" ? <CopyRight /> : null}
     </>
   );
 };

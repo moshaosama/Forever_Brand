@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { MenuItemType } from "../../../Types/MenuItems/MenuItemType";
 import { assets } from "../../../assets/frontend_assets/assets";
-import { NavLinkLists } from "../../Common/Header/Header";
+import { NavLinkLists } from "../../Atoms/NavLinkRender/NavLinkRender";
 
 const MenuLinks = ({ activeMenu, setActiveMenu }: MenuItemType) => {
   return (

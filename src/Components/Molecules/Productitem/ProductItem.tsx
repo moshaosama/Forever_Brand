@@ -15,25 +15,21 @@ const ProductItem = ({ EndSlice, StartSLice }: productItemProps) => {
   return (
     <>
       <div className={`${product}`}>
-        {products.map((el, index) => {
-          return (
-            <>
-              <div className="bg-[#f8f8f8] rounded-lg" key={index}>
-                <div className="rounded-lg cursor-pointer overflow-hidden">
-                  <img
-                    src={el.image[0]}
-                    alt={el.image + ".png"}
-                    className="transition-all duration-500 transform hover:scale-110"
-                  />
-                </div>
-                <div className="text-sm my-2 mx-2">
-                  <p key={index}>{el.name}</p>
-                  <p>$ {el.price}</p>
-                </div>
-              </div>
-            </>
-          );
-        })}
+        {products.map((el, index) => (
+          <div className="bg-[#f8f8f8] rounded-lg" key={index}>
+            <div className="rounded-lg cursor-pointer overflow-hidden">
+              <img
+                src={el.image[0]}
+                alt={`${el.name}.png`}
+                className="transition-all duration-500 transform hover:scale-110"
+              />
+            </div>
+            <div className="text-sm my-2 mx-2">
+              <p>{el.name}</p>
+              <p>$ {el.price}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
