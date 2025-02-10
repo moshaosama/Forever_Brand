@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import InputForm from "../../Atoms/Form/inputForm";
 import Style from "./LoginFrom.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,7 +6,7 @@ import { AppDispatch, RootState } from "../../../Store/globalStore/store";
 import { fetchLogin } from "../../../Store/Reducer/User/LoginReducer";
 import { useNavigate } from "react-router";
 interface LoginFormProps {
-  TextDesc: string;
+  TextDesc: ReactElement;
 }
 
 const LoginForm = ({ TextDesc }: LoginFormProps) => {
@@ -54,7 +54,7 @@ const LoginForm = ({ TextDesc }: LoginFormProps) => {
         />
         <div className={`${TextContainer} w-96 max-sm:w-80 font-semibold`}>
           <h1 className={Text}>Forget Your Password?</h1>
-          <h1 className={Text}>{TextDesc}</h1>
+          {TextDesc}
         </div>
 
         <button
