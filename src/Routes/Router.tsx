@@ -22,6 +22,10 @@ const RouterPages = () => {
           element: <Home />,
         },
         {
+          path: ":id",
+          element: <Product />,
+        },
+        {
           path: "collection",
           children: [
             {

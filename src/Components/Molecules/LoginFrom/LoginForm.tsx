@@ -20,21 +20,6 @@ const LoginForm = ({ TextDesc }: LoginFormProps) => {
   });
   const { Text, TextContainer, Btn } = Style;
 
-  const InputList = [
-    {
-      Type: "text",
-      Label: "Email",
-      Name: "Email",
-      onChange: () => changeEvent,
-    },
-    {
-      Type: "password",
-      Label: "Password",
-      Name: "Password",
-      onChange: () => changeEvent,
-    },
-  ];
-
   const InputRender = () => {
     return (
       <>
@@ -55,6 +40,21 @@ const LoginForm = ({ TextDesc }: LoginFormProps) => {
   const changeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChangeData({ ...changeData, [e.target.name]: e.target.value });
   };
+
+  const InputList = [
+    {
+      Type: "text",
+      Label: "Email",
+      Name: "Email",
+      onChange: changeEvent,
+    },
+    {
+      Type: "password",
+      Label: "Password",
+      Name: "Password",
+      onChange: changeEvent,
+    },
+  ];
 
   const handleSignIn = (event: React.MouseEvent<HTMLButtonElement>) => {
     try {
