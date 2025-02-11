@@ -8,6 +8,7 @@ import SignUp from "../Pages/SignUp";
 import Cart from "../Pages/Cart";
 import MainLayout from "../Layouts/MainLayout";
 import NotFound from "../Pages/NotFound";
+import Product from "../Pages/Product";
 
 const RouterPages = () => {
   const routerPages = createBrowserRouter([
@@ -22,7 +23,16 @@ const RouterPages = () => {
         },
         {
           path: "collection",
-          element: <Collections />,
+          children: [
+            {
+              index: true,
+              element: <Collections />,
+            },
+            {
+              path: ":id",
+              element: <Product />,
+            },
+          ],
         },
         {
           path: "about",

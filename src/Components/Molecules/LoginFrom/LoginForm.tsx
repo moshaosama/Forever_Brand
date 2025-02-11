@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../Store/globalStore/store";
 import { fetchLogin } from "../../../Store/Reducer/User/LoginReducer";
 import { useNavigate } from "react-router";
+import { inputForm } from "../../../Types/InputForm/InputForm";
 interface LoginFormProps {
   TextDesc: ReactElement;
 }
@@ -18,6 +19,38 @@ const LoginForm = ({ TextDesc }: LoginFormProps) => {
     Password: "",
   });
   const { Text, TextContainer, Btn } = Style;
+
+  const InputList = [
+    {
+      Type: "text",
+      Label: "Email",
+      Name: "Email",
+      onChange: () => changeEvent,
+    },
+    {
+      Type: "password",
+      Label: "Password",
+      Name: "Password",
+      onChange: () => changeEvent,
+    },
+  ];
+
+  const InputRender = () => {
+    return (
+      <>
+        {InputList.map((el: inputForm) => {
+          return (
+            <InputForm
+              Type={el.Type}
+              Label={el.Label}
+              Name={el.Name}
+              onChange={el.onChange}
+            />
+          );
+        })}
+      </>
+    );
+  };
 
   const changeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChangeData({ ...changeData, [e.target.name]: e.target.value });
@@ -40,18 +73,7 @@ const LoginForm = ({ TextDesc }: LoginFormProps) => {
   return (
     <>
       <form action="" className="flex flex-col items-center gap-5 my-5">
-        <InputForm
-          Type="text"
-          Label="Email"
-          Name="Email"
-          onChange={changeEvent}
-        />
-        <InputForm
-          Type="password"
-          Label="Password"
-          Name="Password"
-          onChange={changeEvent}
-        />
+        <InputRender />
         <div className={`${TextContainer} w-96 max-sm:w-80 font-semibold`}>
           <h1 className={Text}>Forget Your Password?</h1>
           {TextDesc}
