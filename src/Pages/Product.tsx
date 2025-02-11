@@ -26,28 +26,35 @@ const Product = () => {
           ProductId?.map((el: productType) => {
             return (
               <>
-                <div className="flex h-full gap-4 items-start">
-                  <div key={el._id} className="h-full flex flex-col gap-4">
-                    {el.image.map((el, index) => (
+                <div className="flex max-sm:flex-col">
+                  <div className="flex max-sm:flex-col-reverse  h-full gap-4 items-start">
+                    <div
+                      key={el._id}
+                      className="h-full flex flex-col max-sm:flex-row max-sm:w-full gap-4 max-sm:gap-2"
+                    >
+                      {el.image.map((el, index) => (
+                        <img
+                          key={index}
+                          onClick={() => setImageState(el)}
+                          src={el}
+                          alt="ImageBrand.png"
+                          className="w-[9rem] max-sm:w-20  cursor-pointer"
+                        />
+                      ))}
+                    </div>
+                    <div className="h-full">
                       <img
-                        key={index}
-                        onClick={() => setImageState(el)}
-                        src={el}
-                        alt="ImageBrand.png"
-                        className="w-[9rem]  cursor-pointer"
+                        src={imageState}
+                        alt="Image.png"
+                        className=" w-[38.7rem] max-sm:w-[21.7rem] object-cover"
                       />
-                    ))}
+                    </div>
                   </div>
-                  <div className="h-full">
-                    <img
-                      src={imageState}
-                      alt="Image.png"
-                      className=" w-[38.7rem] object-cover"
-                    />
-                  </div>
-                  <div className="mx-6 flex flex-col gap-3 items-start">
+                  <div className="mx-6 max-sm:mx-0 flex flex-col gap-3 items-start">
                     <div>
-                      <h1 className="text-2xl font-bold mx-3">{el.name}</h1>
+                      <h1 className="text-2xl max-sm:text-lg font-bold mx-3">
+                        {el.name}
+                      </h1>
                       <img
                         src="/1_k5m8q1rRpdQ-H5NogaHnBQ-removebg-preview.png"
                         alt="rating.png"
@@ -55,7 +62,7 @@ const Product = () => {
                       />
                     </div>
                     <h1 className="text-2xl font-bold mx-3">${el.price}</h1>
-                    <p className="w-[40pc] my-4 text-gray-600 font-semibold">
+                    <p className="w-[40pc] my-4 max-sm:w-full text-gray-600 font-semibold">
                       {el.description}
                     </p>
                     <p className="text-black text-sm">Select Size</p>
