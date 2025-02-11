@@ -34,5 +34,5 @@ Ensure you have the following installed:
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/forever-brand.git
+   git clone https://github.com/moshaosama/Forever_Brand.git
    cd forever-brand
