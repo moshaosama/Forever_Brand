@@ -52,7 +52,7 @@ const LoginForm = ({ TextDesc }: LoginFormProps) => {
       Type: "password",
       Label: "Password",
       Name: "Password",
-      onChange: changeEvent,
+      onChange: () => changeEvent,
     },
   ];
 
