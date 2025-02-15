@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../Store/globalStore/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../Store/globalStore/store";
 import { useEffect, useState } from "react";
 import globalStyle from "../Styles/Global.module.css";
 import { productType } from "../Types/Products/productType";
+import { fetchCraeteCart } from "../Store/Reducer/Cart/createCartSlice";
 
 const Product = () => {
   const data = useSelector((state: RootState) => state.productId);
+  const dispatch = useDispatch<AppDispatch>();
   const [imageState, setImageState] = useState("");
   const [, setDataProduct] = useState(
     window.localStorage.getItem("productId") || {}
@@ -19,6 +21,7 @@ const Product = () => {
       setDataProduct(data.data);
     }
   }, [data.data]);
+
   return (
     <>
       <div className={`${container}`} style={{ marginTop: "40px" }}>
@@ -78,7 +81,18 @@ const Product = () => {
                         );
                       })}
                     </div>
-                    <button className="bg-black my-10 p-2 w-40 rounded-md text-white hover:bg-gray-800 transition-all duration-500 cursor-pointer">
+                    <button
+                      onClick={() =>
+                        dispatch(
+                          fetchCraeteCart({
+                            ...el,
+                            sizes: el.sizes[0],
+                            image: el.image[0],
+                          })
+                        )
+                      }
+                      className="bg-black my-10 p-2 w-40 rounded-md text-white hover:bg-gray-800 transition-all duration-500 cursor-pointer"
+                    >
                       Add To Cart
                     </button>
                   </div>
