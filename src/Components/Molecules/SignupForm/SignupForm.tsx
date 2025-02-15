@@ -51,13 +51,14 @@ const SignupForm = ({ TextDesc }: SignUpFormProps) => {
   const InputRender = () => {
     return (
       <>
-        {InputList.map((el: inputForm) => {
+        {InputList.map((el: any) => {
           return (
             <InputForm
               Type={el.Type}
               Label={el.Label}
               Name={el.Name}
               onChange={el.onChange}
+              value={""}
             />
           );
         })}

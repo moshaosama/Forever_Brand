@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { cartType, productType } from "../../../Types/Products/productType";
 
 const initialState: any = {
   loading: false,
