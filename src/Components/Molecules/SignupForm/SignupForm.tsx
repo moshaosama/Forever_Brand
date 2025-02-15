@@ -1,7 +1,6 @@
 import { ReactElement, useState } from "react";
 import InputForm from "../../Atoms/Form/inputForm";
 import Style from "../../Molecules/LoginFrom/LoginFrom.module.css";
-import { inputForm } from "../../../Types/InputForm/InputForm";
 
 import { useDispatch } from "react-redux";
 import { fetchSignUp } from "../../../Store/Reducer/User/SignUpReducer";
