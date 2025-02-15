@@ -21,16 +21,18 @@ const CartSection = () => {
             return (
               <div key={index} className={`${cart_container} shadow-md`}>
                 <div className="flex px-2 w-full justify-between items-center">
-                  <div className="flex gap-10">
+                  <div className="flex gap-10 max-sm:gap-3">
                     <div>
                       <img
                         src={el.image}
                         alt="imageCart.png"
-                        className="w-24"
+                        className="w-24 max-sm:w-20"
                       />
                     </div>
                     <div className="flex flex-col justify-around">
-                      <h1 className="text-lg font-bold">{el.name}</h1>
+                      <h1 className="text-lg font-bold max-sm:font-light max-sm:text-sm">
+                        {el.name}
+                      </h1>
                       <div className="flex items-center gap-10">
                         <p>${el.price}</p>
                         <p className={Size}>{el.sizes}</p>
@@ -43,7 +45,7 @@ const CartSection = () => {
                       name="quantity"
                       id="quantity"
                       value={1}
-                      className="border-[1px] border-[#ddd] border-solid w-20 rounded-sm px-2"
+                      className="border-[1px] max-sm:w-14 border-[#ddd] border-solid w-20 rounded-sm px-2"
                     />
                   </div>
                   <div>
