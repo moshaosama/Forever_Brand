@@ -6,7 +6,12 @@ import { useEffect } from "react";
 import { fetchGetSumCart } from "../../../Store/Reducer/Cart/getCartSlice";
 import { Link } from "react-router-dom";
 
-const CartTotal = (TitleBtn: { TitleBtn: any }) => {
+interface CartTotalProps {
+  TitleBtn: any;
+  onClick: () => void;
+}
+
+const CartTotal = ({ TitleBtn, onClick }: CartTotalProps) => {
   const { cartTotalSection } = style;
   const state = useSelector((state: RootState) => state.SumCart);
   const dispatch = useDispatch<AppDispatch>();
@@ -71,8 +76,11 @@ const CartTotal = (TitleBtn: { TitleBtn: any }) => {
         <CartTotalRender />
         <Link to={"/place-order"}>
           <div className="w-full flex justify-end my-5">
-            <button className="bg-black text-white p-3 cursor-pointer">
-              {TitleBtn.TitleBtn}
+            <button
+              className="bg-black text-white p-3 cursor-pointer"
+              onClick={onClick}
+            >
+              {TitleBtn}
             </button>
           </div>
         </Link>

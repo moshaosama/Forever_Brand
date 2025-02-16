@@ -3,6 +3,8 @@ import globalStyle from "../../../Styles/Global.module.css";
 import TitleContent from "../../Atoms/TitleContent/TitleContent";
 import CartTotal from "../CartTotal/CartTotal";
 import { validationSchema } from "../../../Schema/FormDelivery";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../Store/globalStore/store";
 
 interface InputProps {
   Type: string;
@@ -13,6 +15,8 @@ interface InputProps {
 
 const DeliverySec = () => {
   const { container } = globalStyle;
+
+  // const dispatch = useDispatch<AppDispatch>();
   const formic = useFormik({
     initialValues: {
       firstName: "",
@@ -38,6 +42,8 @@ const DeliverySec = () => {
         name={Name}
         placeholder={PlaceHolder}
         className={`p-2 w-${Width} max-sm:w-80 border-[1px] border-[#ddd]`}
+        value={""}
+        onChange={() => formic.handleChange}
       />
     );
   };
@@ -64,7 +70,7 @@ const DeliverySec = () => {
                 Type="text"
                 PlaceHolder="Lastname"
                 Name="LastName"
-                Width="64"
+                Width="69"
               />
             </div>
             <div className="my-2">
@@ -123,7 +129,13 @@ const DeliverySec = () => {
           </form>
         </div>
         <div>
-          <CartTotal TitleBtn="PLACE ORDER" />
+          <CartTotal
+            TitleBtn="PLACE ORDER"
+            onClick={() => {
+              formic.handleSubmit();
+              console.log(formic);
+            }}
+          />
         </div>
       </div>
     </>

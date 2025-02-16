@@ -11,13 +11,12 @@ import { fetchDeleteCart } from "../../../Store/Reducer/Cart/deleteCart";
 const CartSection = () => {
   const state = useSelector((state: RootState) => state.Cart);
   const dispatch = useDispatch<AppDispatch>();
-  const [data, setData] = useState(false);
   const { cart_container, Size } = style;
 
   useEffect(() => {
     dispatch(fetchgetCart());
     dispatch(fetchGetSumCart());
-  }, [data]);
+  }, []);
 
   return (
     <>
@@ -56,8 +55,14 @@ const CartSection = () => {
                   </div>
                   <div
                     onClick={() => {
-                      dispatch(fetchDeleteCart(el.id));
-                      setData(!data);
+                      dispatch(fetchDeleteCart(el.id))
+                        .then(() => {
+                          dispatch(fetchgetCart()); // إعادة جلب البيانات بعد الحذف مباشرةً
+                          dispatch(fetchGetSumCart()); // تحديث إجمالي السعر بعد الحذف
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
                     }}
                     className="cursor-pointer"
                   >
