@@ -11,7 +11,8 @@ export const Store = configureStore({
     productId: productIdReducer,
     login: loginReducer,
     SignUp: SignUpReducer,
-    Cart: CartReducer,
+    Cart: CartReducer.cart,
+    SumCart: CartReducer.cartSum,
   },
 });
 

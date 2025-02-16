@@ -9,6 +9,7 @@ import Cart from "../Pages/Cart";
 import MainLayout from "../Layouts/MainLayout";
 import NotFound from "../Pages/NotFound";
 import Product from "../Pages/Product";
+import Delivery from "../Pages/Delivery";
 
 const RouterPages = () => {
   const routerPages = createBrowserRouter([
@@ -57,6 +58,10 @@ const RouterPages = () => {
         {
           path: "cart",
           element: <Cart />,
+        },
+        {
+          path: "place-order",
+          element: <Delivery />,
         },
       ],
     },

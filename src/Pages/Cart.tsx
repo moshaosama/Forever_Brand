@@ -1,5 +1,6 @@
 import TitleContent from "../Components/Atoms/TitleContent/TitleContent";
 import CartSection from "../Components/Molecules/Cart/CartSection";
+import CartTotal from "../Components/Molecules/CartTotal/CartTotal";
 import globalStyle from "../Styles/Global.module.css";
 
 const Cart = () => {
@@ -7,10 +8,13 @@ const Cart = () => {
   return (
     <>
       <div className={container}>
-        <TitleContent LeftTitle="Your" RightTitle="Cart" Active={false} />
+        <TitleContent LeftTitle="YOUR" RightTitle="CART" Active={false} />
       </div>
       <div className={container}>
         <CartSection />
+      </div>
+      <div className={container} style={{ justifyContent: "end" }}>
+        <CartTotal TitleBtn="PROCEED TO CHECKOUT" />
       </div>
     </>
   );

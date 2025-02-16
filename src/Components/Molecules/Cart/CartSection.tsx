@@ -1,17 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../Store/globalStore/store";
-import { useEffect } from "react";
-import { fetchgetCart } from "../../../Store/Reducer/Cart/getCartSlice";
+import { useEffect, useState } from "react";
+import {
+  fetchgetCart,
+  fetchGetSumCart,
+} from "../../../Store/Reducer/Cart/getCartSlice";
 import style from "./CartSection.module.css";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { fetchDeleteCart } from "../../../Store/Reducer/Cart/deleteCart";
 const CartSection = () => {
   const state = useSelector((state: RootState) => state.Cart);
   const dispatch = useDispatch<AppDispatch>();
+  const [data, setData] = useState(false);
   const { cart_container, Size } = style;
 
   useEffect(() => {
     dispatch(fetchgetCart());
-  }, []);
+    dispatch(fetchGetSumCart());
+  }, [data]);
 
   return (
     <>
@@ -48,7 +54,13 @@ const CartSection = () => {
                       className="border-[1px] max-sm:w-14 border-[#ddd] border-solid w-20 rounded-sm px-2"
                     />
                   </div>
-                  <div>
+                  <div
+                    onClick={() => {
+                      dispatch(fetchDeleteCart(el.id));
+                      setData(!data);
+                    }}
+                    className="cursor-pointer"
+                  >
                     <MdOutlineDeleteOutline className="text-4xl" />
                   </div>
                 </div>
