@@ -10,6 +10,7 @@ import MainLayout from "../Layouts/MainLayout";
 import NotFound from "../Pages/NotFound";
 import Product from "../Pages/Product";
 import Delivery from "../Pages/Delivery";
+import Orders from "../Pages/Orders";
 
 const RouterPages = () => {
   const routerPages = createBrowserRouter([
@@ -62,6 +63,10 @@ const RouterPages = () => {
         {
           path: "place-order",
           element: <Delivery />,
+        },
+        {
+          path: "orders",
+          element: <Orders />,
         },
       ],
     },

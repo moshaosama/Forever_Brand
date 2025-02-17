@@ -1,39 +1,38 @@
-import { useFormik } from "formik";
 import globalStyle from "../../../Styles/Global.module.css";
 import TitleContent from "../../Atoms/TitleContent/TitleContent";
 import CartTotal from "../CartTotal/CartTotal";
-import { validationSchema } from "../../../Schema/FormDelivery";
+
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../Store/globalStore/store";
-
-interface InputProps {
-  Type: string;
-  Name: string;
-  PlaceHolder: string;
-  Width: string;
-}
+import { fetchCraeteDelivery } from "../../../Store/Reducer/Delivery/createDelivery";
 
 const DeliverySec = () => {
   const { container } = globalStyle;
+  const dispatch = useDispatch<AppDispatch>();
 
-  // const dispatch = useDispatch<AppDispatch>();
-  const formic = useFormik({
-    initialValues: {
-      firstName: "",
-      LastName: "",
-      EmailAddress: "",
-      Street: "",
-      City: "",
-      State: "",
-      ZipCode: "",
-      Country: "",
-      Phone: "",
-    },
-    validationSchema,
-    onSubmit: () => {
-      console.log("Mosha");
-    },
+  const [form, setForm] = useState({
+    FirstName: "",
+    LastName: "",
+    EmailAddress: "",
+    Street: "",
+    City: "",
+    State: "",
+    ZipCode: "",
+    Country: "",
+    Phone: "",
   });
+
+  type InputProps = {
+    Type: string;
+    Name: keyof typeof form;
+    PlaceHolder: string;
+    Width: string;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const InputRender = ({ Type, Name, PlaceHolder, Width }: InputProps) => {
     return (
@@ -42,8 +41,8 @@ const DeliverySec = () => {
         name={Name}
         placeholder={PlaceHolder}
         className={`p-2 w-${Width} max-sm:w-80 border-[1px] border-[#ddd]`}
-        value={""}
-        onChange={() => formic.handleChange}
+        value={form[Name]}
+        onChange={handleChange}
       />
     );
   };
@@ -58,7 +57,7 @@ const DeliverySec = () => {
               Active={false}
             />
           </div>
-          <form action="" onSubmit={formic.handleSubmit}>
+          <form action="">
             <div className="flex gap-5">
               <InputRender
                 Type="text"
@@ -132,8 +131,7 @@ const DeliverySec = () => {
           <CartTotal
             TitleBtn="PLACE ORDER"
             onClick={() => {
-              formic.handleSubmit();
-              console.log(formic);
+              dispatch(fetchCraeteDelivery(form));
             }}
           />
         </div>

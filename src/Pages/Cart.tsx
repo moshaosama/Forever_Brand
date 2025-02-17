@@ -14,7 +14,7 @@ const Cart = () => {
         <CartSection />
       </div>
       <div className={container} style={{ justifyContent: "end" }}>
-        <CartTotal TitleBtn="PROCEED TO CHECKOUT" />
+        <CartTotal TitleBtn="PROCEED TO CHECKOUT" onClick={() => {}} />
       </div>
     </>
   );

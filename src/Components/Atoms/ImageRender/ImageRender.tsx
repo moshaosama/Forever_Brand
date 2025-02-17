@@ -20,7 +20,7 @@ const ImageRender = () => {
     {
       src: assets.profile_icon,
       alt: "profile.png",
-      link: Token ? "" : "/login",
+      link: Token ? window.location.pathname : "/login",
       onclick: changeDetail,
     },
     {
@@ -44,8 +44,7 @@ const ImageRender = () => {
     {
       Head: "Orders",
       onclick: () => {
-        window.localStorage.removeItem("Token");
-        Navigate("/login");
+        Navigate("/orders");
       },
     },
     {
@@ -82,7 +81,10 @@ const ImageRender = () => {
                 return (
                   <h1
                     className="text-black hover:font-semibold cursor-pointer"
-                    onClick={el.onclick}
+                    onClick={() => {
+                      el.onclick();
+                      setDetail(false);
+                    }}
                   >
                     {el.Head}
                   </h1>

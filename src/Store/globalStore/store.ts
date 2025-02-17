@@ -4,6 +4,7 @@ import productIdReducer from "../Reducer/Products/ProductIdSlice";
 import loginReducer from "../Reducer/User/LoginReducer";
 import SignUpReducer from "../Reducer/User/SignUpReducer";
 import CartReducer from "../Reducer/Cart/getCartSlice";
+import getOrdersReducer from "../Reducer/Delivery/getOrders";
 
 export const Store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const Store = configureStore({
     SignUp: SignUpReducer,
     Cart: CartReducer.cart,
     SumCart: CartReducer.cartSum,
+    Orders: getOrdersReducer,
   },
 });
 
