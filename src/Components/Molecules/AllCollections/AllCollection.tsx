@@ -19,14 +19,14 @@ const AllCollection = () => {
   return (
     <>
       <div className="my-10 mx-0">
-        <div className="flex mb-8 justify-start max-sm:mx-4">
+        <div className="flex  mb-8 justify-start max-sm:mx-4">
           <TitleContent
             LeftTitle="ALL"
             RightTitle="COLLECTIONS"
             Active={false}
           />
         </div>
-        <div className="-mx-44">
+        <div className="-mx-44  max-sm:mx-2 max-sm:flex max-sm:justify-center">
           <ProductItem
             StartSLice={0}
             EndSlice={state.data.length}

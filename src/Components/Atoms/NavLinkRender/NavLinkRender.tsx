@@ -22,13 +22,19 @@ const NavLinkRender = () => {
   const { navLink } = Style;
   return (
     <>
-      {NavLinkLists.map((el, index) => {
-        return (
-          <NavLink key={index} to={el.To} className={navLink}>
-            {el.Title}
-          </NavLink>
-        );
-      })}
+      <div className="flex items-center gap-7">
+        {NavLinkLists.map((el, index) => {
+          return (
+            <NavLink key={index} to={el.To} className={navLink}>
+              {el.Title}
+            </NavLink>
+          );
+        })}
+
+        <button className="text-sm px-2 py-1 font-semibold text-[#858585] border-[1px] cursor-pointer border-solid border-[#ddd] rounded-full">
+          Admin Panel
+        </button>
+      </div>
     </>
   );
 };

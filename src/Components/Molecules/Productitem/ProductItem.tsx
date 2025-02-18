@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  productItemProps,
-  productType,
-} from "../../../Types/Products/productType";
+import { productItemProps } from "../../../Types/Products/productType";
 import { AppDispatch, RootState } from "../../../Store/globalStore/store";
+
 import { Link } from "react-router";
 import { getProductByID } from "../../../Store/Reducer/Products/ProductIdSlice";
 import { getProduct } from "../../../Store/Reducer/Products/productSlice";
@@ -12,16 +10,16 @@ import { getProduct } from "../../../Store/Reducer/Products/productSlice";
 const ProductItem = ({ EndSlice, StartSLice, product }: productItemProps) => {
   const data = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch<AppDispatch>();
-  const [, setProduct] = useState<productType[]>([]);
-  useEffect(() => setProduct(data.data.slice(StartSLice, EndSlice)), []);
 
   const handleClick = (id: string) => {
     dispatch(getProductByID(id));
   };
 
   useEffect(() => {
-    dispatch(getProduct());
-  }, [data.data]);
+    if (!data.data || data.data.length === 0) {
+      dispatch(getProduct());
+    }
+  }, [data.data, dispatch]);
 
   return (
     <>
