@@ -8,10 +8,12 @@ import { fetchCraeteCart } from "../Store/Reducer/Cart/createCartSlice";
 const Product = () => {
   const data = useSelector((state: RootState) => state.productId);
   const dispatch = useDispatch<AppDispatch>();
-  const [imageState, setImageState] = useState("");
+  const productData = JSON.parse(window.localStorage.getItem("productId")!)[0];
+  const [imageState, setImageState] = useState(productData?.image[0]);
   const [, setDataProduct] = useState(
     window.localStorage.getItem("productId") || {}
   );
+
   const { container } = globalStyle;
   const ProductId = JSON.parse(window.localStorage.getItem("productId")!);
 
@@ -20,7 +22,7 @@ const Product = () => {
       window.localStorage.setItem("productId", JSON.stringify(data.data));
       setDataProduct(data.data);
     }
-  }, [data.data]);
+  }, [data.data, imageState]);
 
   return (
     <>

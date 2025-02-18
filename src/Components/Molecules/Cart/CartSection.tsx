@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../Store/globalStore/store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   fetchgetCart,
   fetchGetSumCart,

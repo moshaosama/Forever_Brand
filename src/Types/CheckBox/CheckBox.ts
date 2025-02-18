@@ -1,5 +1,6 @@
 export interface CheckBoxFormProps {
   Name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface CheckBoxComProps {
@@ -9,7 +10,7 @@ export interface CheckBoxComProps {
 
 export const CheckBoxCaegories = [
   {
-    Name: "Man",
+    Name: "Men",
   },
   {
     Name: "Women",

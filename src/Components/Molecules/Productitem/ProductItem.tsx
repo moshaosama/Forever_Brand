@@ -8,11 +8,12 @@ import { AppDispatch, RootState } from "../../../Store/globalStore/store";
 import style from "./ProductItem.module.css";
 import { Link } from "react-router";
 import { getProductByID } from "../../../Store/Reducer/Products/ProductIdSlice";
+import { getProduct } from "../../../Store/Reducer/Products/productSlice";
 
 const ProductItem = ({ EndSlice, StartSLice }: productItemProps) => {
   const data = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch<AppDispatch>();
-  const [products, setProduct] = useState<productType[]>([]);
+  const [, setProduct] = useState<productType[]>([]);
   useEffect(() => setProduct(data.data.slice(StartSLice, EndSlice)), []);
   const { product } = style;
 
@@ -20,11 +21,14 @@ const ProductItem = ({ EndSlice, StartSLice }: productItemProps) => {
     dispatch(getProductByID(id));
   };
 
-  useEffect(() => {}, [data.data]);
+  useEffect(() => {
+    dispatch(getProduct());
+  }, [data.data]);
+
   return (
     <>
       <div className={`${product}`}>
-        {products.map((el, index) => (
+        {data?.data.map((el, index) => (
           <Link to={`${el._id}`}>
             <div
               className="bg-[#f8f8f8] rounded-lg"
