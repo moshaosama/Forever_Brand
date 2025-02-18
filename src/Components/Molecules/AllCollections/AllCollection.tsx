@@ -23,7 +23,9 @@ const AllCollection = () => {
             Active={false}
           />
         </div>
-        <ProductItem StartSLice={0} EndSlice={state.data.length} />
+        <div className="-mx-44">
+          <ProductItem StartSLice={0} EndSlice={state.data.length} />
+        </div>
       </div>
     </>
   );

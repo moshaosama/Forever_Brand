@@ -28,7 +28,7 @@ const ProductItem = ({ EndSlice, StartSLice }: productItemProps) => {
   return (
     <>
       <div className={`${product}`}>
-        {data?.data.map((el, index) => (
+        {data?.data?.slice(StartSLice, EndSlice).map((el, index) => (
           <Link to={`${el._id}`}>
             <div
               className="bg-[#f8f8f8] rounded-lg"
