@@ -21,6 +21,7 @@ const DeliverySec = () => {
     ZipCode: "",
     Country: "",
     Phone: "",
+    Date: "Tue Feb 18 2025",
   });
 
   type InputProps = {

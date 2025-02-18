@@ -18,10 +18,10 @@ const OrderSec = () => {
   const OrdersRender = () => {
     return (
       <>
-        <div className="w-full ">
+        <div className="w-full">
           {state.data?.result?.map((el: any, index: number) => {
             return (
-              <div key={index}>
+              <div key={index} className="flex flex-col gap-3">
                 {JSON.parse(el.Order).map((el2: any, index: number) => {
                   return (
                     <div key={index} className={`${cart_container} shadow-md`}>

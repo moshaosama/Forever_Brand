@@ -29,4 +29,5 @@ export interface cartType {
 export interface productItemProps {
   StartSLice: number;
   EndSlice: number;
+  product: any;
 }

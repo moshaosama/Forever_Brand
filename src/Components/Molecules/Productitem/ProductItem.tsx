@@ -5,17 +5,15 @@ import {
   productType,
 } from "../../../Types/Products/productType";
 import { AppDispatch, RootState } from "../../../Store/globalStore/store";
-import style from "./ProductItem.module.css";
 import { Link } from "react-router";
 import { getProductByID } from "../../../Store/Reducer/Products/ProductIdSlice";
 import { getProduct } from "../../../Store/Reducer/Products/productSlice";
 
-const ProductItem = ({ EndSlice, StartSLice }: productItemProps) => {
+const ProductItem = ({ EndSlice, StartSLice, product }: productItemProps) => {
   const data = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch<AppDispatch>();
   const [, setProduct] = useState<productType[]>([]);
   useEffect(() => setProduct(data.data.slice(StartSLice, EndSlice)), []);
-  const { product } = style;
 
   const handleClick = (id: string) => {
     dispatch(getProductByID(id));

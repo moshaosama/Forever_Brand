@@ -4,13 +4,16 @@ import { AppDispatch, RootState } from "../../../Store/globalStore/store";
 import ProductItem from "../Productitem/ProductItem";
 import { useEffect } from "react";
 import { getProduct } from "../../../Store/Reducer/Products/productSlice";
-
+import style from "./AllCollection.module.css";
+import { fetchgetCart } from "../../../Store/Reducer/Cart/getCartSlice";
 const AllCollection = () => {
   const state = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch<AppDispatch>();
+  const { product } = style;
 
   useEffect(() => {
     dispatch(getProduct());
+    dispatch(fetchgetCart());
   }, [dispatch]);
 
   return (
@@ -24,7 +27,11 @@ const AllCollection = () => {
           />
         </div>
         <div className="-mx-44">
-          <ProductItem StartSLice={0} EndSlice={state.data.length} />
+          <ProductItem
+            StartSLice={0}
+            EndSlice={state.data.length}
+            product={product}
+          />
         </div>
       </div>
     </>

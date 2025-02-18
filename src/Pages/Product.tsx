@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import globalStyle from "../Styles/Global.module.css";
 import { productType } from "../Types/Products/productType";
 import { fetchCraeteCart } from "../Store/Reducer/Cart/createCartSlice";
+import { fetchgetCart } from "../Store/Reducer/Cart/getCartSlice";
 
 const Product = () => {
   const data = useSelector((state: RootState) => state.productId);
@@ -14,24 +15,30 @@ const Product = () => {
     window.localStorage.getItem("productId") || {}
   );
 
+  const [dataLength, setDataLength] = useState(false);
+
   const { container } = globalStyle;
   const ProductId = JSON.parse(window.localStorage.getItem("productId")!);
 
   useEffect(() => {
     if (data.data && Object.keys(data.data).length > 0) {
-      window.localStorage.setItem("productId", JSON.stringify(data.data));
+      window.localStorage.setItem(
+        "productId",
+        ProductId ? JSON.stringify(data.data) : ""
+      );
       setDataProduct(data.data);
     }
-  }, [data.data, imageState]);
+    dispatch(fetchgetCart());
+  }, [data.data, imageState, dataLength]);
 
   return (
     <>
       <div className={`${container}`} style={{ marginTop: "40px" }}>
         {ProductId &&
-          ProductId?.map((el: productType) => {
+          ProductId?.map((el: productType, index: number) => {
             return (
               <>
-                <div className="flex max-sm:flex-col">
+                <div className="flex max-sm:flex-col" key={index}>
                   <div className="flex max-sm:flex-col-reverse  h-full gap-4 items-start">
                     <div
                       key={el._id}
@@ -91,7 +98,7 @@ const Product = () => {
                             sizes: el.sizes[0],
                             image: el.image[0],
                           })
-                        )
+                        ).then(() => setDataLength(!dataLength))
                       }
                       className="bg-black my-10 p-2 w-40 rounded-md text-white hover:bg-gray-800 transition-all duration-500 cursor-pointer"
                     >

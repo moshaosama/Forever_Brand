@@ -1,12 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../../assets/frontend_assets/assets";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../Store/globalStore/store";
+import { fetchgetCart } from "../../../Store/Reducer/Cart/getCartSlice";
 
 const ImageRender = () => {
   const Token = window.localStorage.getItem("Token");
   const [detail, setDetail] = useState(false);
   const Navigate = useNavigate();
+  const state = useSelector((state: RootState) => state.Cart);
+  const dispatch = useDispatch<AppDispatch>();
+  const [DataLength, setDataLength] = useState(0);
 
+  useEffect(() => {
+    dispatch(fetchgetCart()).then(() => setDataLength(DataLength + 1));
+  }, [dispatch]);
   const changeDetail = () => {
     setDetail(!detail);
   };
@@ -30,6 +39,7 @@ const ImageRender = () => {
       onclick: () => {},
     },
   ];
+
   const Header = [
     {
       Head: "Source Code",
@@ -60,12 +70,24 @@ const ImageRender = () => {
       {ImagesList.map((el, index) => {
         return (
           <Link to={el.link} onClick={el.onclick}>
-            <img
-              key={index}
-              src={el.src}
-              alt={el.alt}
-              style={{ width: "20px", height: "20px", cursor: "pointer" }}
-            />
+            <div className="relative">
+              <img
+                key={index}
+                src={el.src}
+                alt={el.alt}
+                style={{ width: "20px", height: "20px", cursor: "pointer" }}
+              />
+              {index === 2 ? (
+                <div className="absolute top-3 left-2 flex justify-center items-center">
+                  <div
+                    className="w-4 h-4 bg-black rounded-full text-white  text-center"
+                    style={{ fontSize: "12px" }}
+                  >
+                    {state?.data?.result?.length}
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </Link>
         );
       })}
