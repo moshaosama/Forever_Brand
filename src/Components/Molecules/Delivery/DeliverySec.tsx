@@ -10,6 +10,7 @@ import { fetchCraeteDelivery } from "../../../Store/Reducer/Delivery/createDeliv
 const DeliverySec = () => {
   const { container } = globalStyle;
   const dispatch = useDispatch<AppDispatch>();
+  const today = new Date().toDateString();
 
   const [form, setForm] = useState({
     FirstName: "",
@@ -21,7 +22,7 @@ const DeliverySec = () => {
     ZipCode: "",
     Country: "",
     Phone: "",
-    Date: "Tue Feb 18 2025",
+    Date: today,
   });
 
   type InputProps = {

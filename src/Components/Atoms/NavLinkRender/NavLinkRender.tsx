@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Style from "./navLinkRender.module.css";
 export const NavLinkLists = [
   {
@@ -31,9 +31,11 @@ const NavLinkRender = () => {
           );
         })}
 
-        <button className="text-sm px-2 py-1 font-semibold text-[#858585] border-[1px] cursor-pointer border-solid border-[#ddd] rounded-full">
-          Admin Panel
-        </button>
+        <a href={"/admin"} target="_black">
+          <button className="text-sm px-2 py-1 font-semibold text-[#858585] border-[1px] cursor-pointer border-solid border-[#ddd] rounded-full">
+            Admin Panel
+          </button>
+        </a>
       </div>
     </>
   );

@@ -11,6 +11,7 @@ import NotFound from "../Pages/NotFound";
 import Product from "../Pages/Product";
 import Delivery from "../Pages/Delivery";
 import Orders from "../Pages/Orders";
+import Admin from "../Pages/Admin";
 
 const RouterPages = () => {
   const routerPages = createBrowserRouter([
@@ -67,6 +68,10 @@ const RouterPages = () => {
         {
           path: "orders",
           element: <Orders />,
+        },
+        {
+          path: "admin",
+          element: <Admin />,
         },
       ],
     },
