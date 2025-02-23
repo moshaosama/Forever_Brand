@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { initialState } from "./getCartSlice";
-import useAxios from "../../../hooks/useAxios";
+import request from "../../../hooks/useApi";
 
 export const fetchDeleteCart = createAsyncThunk(
   "deletecart/fetchDeleteCart",
-  (id: number) => {
-    useAxios(`http://localhost:8000/deletecart/${id}`);
+  async (id: number) => {
+    return request(`http://localhost:8000/deletecart/${id}`, "DELETE");
   }
 );
 

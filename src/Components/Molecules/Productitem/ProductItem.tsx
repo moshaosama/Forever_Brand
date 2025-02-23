@@ -25,10 +25,9 @@ const ProductItem = ({ EndSlice, StartSLice, product }: productItemProps) => {
     <>
       <div className={`${product}`}>
         {data?.data?.slice(StartSLice, EndSlice).map((el, index) => (
-          <Link to={`${el._id}`}>
+          <Link to={`${el._id}`} key={index}>
             <div
               className="bg-[#f8f8f8] rounded-lg"
-              key={index}
               onClick={() => handleClick(el._id)}
             >
               <div className="rounded-lg cursor-pointer overflow-hidden">

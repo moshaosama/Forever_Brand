@@ -69,10 +69,9 @@ const ImageRender = () => {
     <>
       {ImagesList.map((el, index) => {
         return (
-          <Link to={el.link} onClick={el.onclick}>
+          <Link to={el.link} onClick={el.onclick} key={index}>
             <div className="relative">
               <img
-                key={index}
                 src={el.src}
                 alt={el.alt}
                 style={{ width: "20px", height: "20px", cursor: "pointer" }}
