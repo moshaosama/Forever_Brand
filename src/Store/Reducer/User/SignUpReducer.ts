@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import useAxios from "../../../hooks/useAxios";
 
 const initialState: any = {
   loading: false,
@@ -9,13 +10,8 @@ const initialState: any = {
 
 export const fetchSignUp = createAsyncThunk(
   "signup/fetchSignUp",
-  async (data: any) => {
-    try {
-      const response = await axios.post("http://localhost:8000/signup", data);
-      return response.data;
-    } catch (err) {
-      return err;
-    }
+  (data: any) => {
+    useAxios("http://localhost:8000/signup", data);
   }
 );
 

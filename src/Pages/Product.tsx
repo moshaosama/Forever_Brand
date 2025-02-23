@@ -9,16 +9,19 @@ import { fetchgetCart } from "../Store/Reducer/Cart/getCartSlice";
 const Product = () => {
   const data = useSelector((state: RootState) => state.productId);
   const dispatch = useDispatch<AppDispatch>();
-  const productData = JSON.parse(window.localStorage.getItem("productId")!)[0];
-  const [imageState, setImageState] = useState(productData?.image[0]);
-  const [, setDataProduct] = useState(
-    window.localStorage.getItem("productId") || {}
-  );
+  // const productData = JSON.parse(window.localStorage.getItem("productId")!)[0];
+  const [imageState, setImageState] = useState("");
+  const [, setDataProduct] = useState(() => {
+    const storedProductId = window.localStorage.getItem("productId");
+    return storedProductId ? JSON.parse(storedProductId) : {};
+  });
 
   const [dataLength, setDataLength] = useState(false);
 
   const { container } = globalStyle;
-  const ProductId = JSON.parse(window.localStorage.getItem("productId")!);
+
+  const storedProductId = window.localStorage.getItem("productId");
+  const ProductId = storedProductId ? JSON.parse(storedProductId) : [];
 
   useEffect(() => {
     if (data.data && Object.keys(data.data).length > 0) {
@@ -29,18 +32,18 @@ const Product = () => {
       setDataProduct(data.data);
     }
     dispatch(fetchgetCart());
-  }, [data.data, imageState, dataLength]);
+  }, [data.data, dataLength]);
 
-  useEffect(() => {
+  const handleCick = () => {
     const Image_Product = document.getElementById("Images_Product");
-    const imageState = document.getElementById("imageState");
     const Details = document.getElementById("Details");
+    const imageState = document.getElementById("imageState");
     imageState?.style?.setProperty("opacity", "100%");
     imageState?.style?.setProperty("left", "0px");
     Details?.style?.setProperty("opacity", "100%");
     Details?.style?.setProperty("left", "0px");
     Image_Product?.style.setProperty("gap", "10px");
-  }, []);
+  };
 
   return (
     <>
@@ -59,7 +62,10 @@ const Product = () => {
                       {el.image.map((el, index) => (
                         <img
                           key={index}
-                          onClick={() => setImageState(el)}
+                          onClick={() => {
+                            setImageState(el);
+                            handleCick();
+                          }}
                           src={el}
                           alt="ImageBrand.png"
                           className="w-[9rem] max-sm:w-20  cursor-pointer"

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import useAxios from "../../../hooks/useAxios";
 
 const initialState: any = {
   loading: false,
@@ -9,14 +10,8 @@ const initialState: any = {
 
 export const fetchCraeteCart = createAsyncThunk(
   "createCart/fetchCraeteCart",
-  async (data: any) => {
-    try {
-      const response = await axios.post("http://localhost:8000/addcart", data);
-      return response.data;
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
+  (data: any) => {
+    useAxios("http://localhost:8000/addcart", data);
   }
 );
 

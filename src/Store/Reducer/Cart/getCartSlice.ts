@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import useAxios from "../../../hooks/useAxios";
 
 export const initialState: any = {
   loading: false,
@@ -51,14 +52,8 @@ const initialSum: { Total: number; loading: boolean; error: string } | any = {
 
 export const fetchGetSumCart = createAsyncThunk(
   "getSumCart/fetchGetSumCart",
-  async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/getsumprice");
-      return response.data;
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
+  () => {
+    useAxios("http://localhost:8000/getsumprice");
   }
 );
 

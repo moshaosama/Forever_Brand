@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import useAxios from "../../../hooks/useAxios";
 
 const initialState: any = {
   loading: false,
@@ -9,14 +10,8 @@ const initialState: any = {
 
 export const fetchgetOrders = createAsyncThunk(
   "getOrders/fetchgetOrders",
-  async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/getdelivery");
-      return response.data;
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
+  () => {
+    useAxios("http://localhost:8000/getdelivery");
   }
 );
 
