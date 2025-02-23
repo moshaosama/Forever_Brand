@@ -1,20 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 import TitleContent from "../../Atoms/TitleContent/TitleContent";
 import { AppDispatch, RootState } from "../../../Store/globalStore/store";
-import ProductItem from "../Productitem/ProductItem";
-import { useEffect } from "react";
-import { getProduct } from "../../../Store/Reducer/Products/productSlice";
+import { lazy, Suspense, useEffect } from "react";
 import style from "./AllCollection.module.css";
 import { fetchgetCart } from "../../../Store/Reducer/Cart/getCartSlice";
+
+import Skeleton from "../../Atoms/Skeleton/Skeleton";
 const AllCollection = () => {
   const state = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch<AppDispatch>();
   const { product } = style;
 
   useEffect(() => {
-    dispatch(getProduct());
     dispatch(fetchgetCart());
   }, [dispatch]);
+
+  const ProductItem = lazy(() => {
+    return new Promise((resolver) => {
+      setTimeout(() => {
+        resolver(import("../Productitem/ProductItem"!));
+      }, 500);
+    });
+  });
 
   return (
     <>
@@ -26,12 +33,15 @@ const AllCollection = () => {
             Active={false}
           />
         </div>
+
         <div className="-mx-44  max-sm:mx-2 max-sm:flex max-sm:justify-center">
-          <ProductItem
-            StartSLice={0}
-            EndSlice={state.data.length}
-            product={product}
-          />
+          <Suspense fallback={<Skeleton />}>
+            <ProductItem
+              StartSLice={0}
+              EndSlice={state.data.length}
+              product={product}
+            />
+          </Suspense>
         </div>
       </div>
     </>

@@ -1,0 +1,22 @@
+.skeleton {
+  border-radius: 12px;
+  margin-left: 1pc;
+  min-height: 360px;
+  box-sizing: border-box;
+  width: 250px;
+}
+
+.skeleton_image {
+  background-color: #5c5c5c;
+  width: 100%;
+  height: 19pc;
+  border-radius: 12px;
+}
+
+.skeleton_text {
+  background-color: #5c5c5c;
+  width: 100%;
+  margin-top: 10px;
+  height: 1pc;
+  border-radius: 12px;
+}
