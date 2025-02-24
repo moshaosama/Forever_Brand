@@ -34,7 +34,7 @@ const Product = () => {
     dispatch(fetchgetCart());
   }, [data.data, dataLength]);
 
-  const handleCick = () => {
+  useEffect(() => {
     const Image_Product = document.getElementById("Images_Product");
     const Details = document.getElementById("Details");
     const imageState = document.getElementById("imageState");
@@ -43,7 +43,7 @@ const Product = () => {
     Details?.style?.setProperty("opacity", "100%");
     Details?.style?.setProperty("left", "0px");
     Image_Product?.style.setProperty("gap", "10px");
-  };
+  }, []);
 
   return (
     <>
@@ -63,7 +63,6 @@ const Product = () => {
                         key={index}
                         onClick={() => {
                           setImageState(el);
-                          handleCick();
                         }}
                         src={el}
                         alt="ImageBrand.png"

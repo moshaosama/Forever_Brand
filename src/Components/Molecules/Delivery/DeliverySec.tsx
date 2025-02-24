@@ -6,10 +6,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../Store/globalStore/store";
 import { fetchCraeteDelivery } from "../../../Store/Reducer/Delivery/createDelivery";
+import InputForm from "../../Atoms/Form/inputForm";
 
 const DeliverySec = () => {
   const { container } = globalStyle;
   const dispatch = useDispatch<AppDispatch>();
+  const [isPending, setPending] = useState(false);
   const today = new Date().toDateString();
 
   const [form, setForm] = useState({
@@ -25,29 +27,17 @@ const DeliverySec = () => {
     Date: today,
   });
 
-  type InputProps = {
-    Type: string;
-    Name: keyof typeof form;
-    PlaceHolder: string;
-    Width: string;
+  const handleClick = async () => {
+    setPending(true);
+    await new Promise((resolver) => setTimeout(resolver, 3000));
+    setPending(false);
+    dispatch(fetchCraeteDelivery(form));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const InputRender = ({ Type, Name, PlaceHolder, Width }: InputProps) => {
-    return (
-      <input
-        type={Type}
-        name={Name}
-        placeholder={PlaceHolder}
-        className={`p-2 w-${Width} max-sm:w-80 border-[1px] border-[#ddd]`}
-        value={form[Name]}
-        onChange={handleChange}
-      />
-    );
-  };
   return (
     <>
       <div className={container}>
@@ -61,80 +51,78 @@ const DeliverySec = () => {
           </div>
           <form action="">
             <div className="flex gap-5">
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="Firstname"
+                Label="FirstName"
                 Name="FirstName"
-                Width="64"
+                onChange={handleChange}
               />
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="Lastname"
                 Name="LastName"
-                Width="69"
+                Label="LastName"
+                onChange={handleChange}
               />
             </div>
             <div className="my-2">
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="Emailaddress"
+                Label="Emailaddress"
                 Name="EmailAddress"
-                Width="[33.24pc]"
+                onChange={handleChange}
               />
             </div>
             <div className="my-2">
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="Street"
+                Label="Street"
                 Name="Street"
-                Width="[33.24pc]"
+                onChange={handleChange}
               />
             </div>
             <div className="flex gap-5">
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="City"
+                Label="City"
                 Name="City"
-                Width="64"
+                onChange={handleChange}
               />
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="State"
+                Label="State"
                 Name="State"
-                Width="64"
+                onChange={handleChange}
               />
             </div>
 
             <div className="flex gap-5 my-2">
-              <InputRender
+              <InputForm
                 Type="number"
-                PlaceHolder="Zipcode"
+                Label="Zipcode"
                 Name="ZipCode"
-                Width="64"
+                onChange={handleChange}
               />
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="Country"
+                Label="Country"
                 Name="Country"
-                Width="64"
+                onChange={handleChange}
               />
             </div>
             <div className="my-2">
-              <InputRender
+              <InputForm
                 Type="text"
-                PlaceHolder="Phone"
+                Label="Phone"
                 Name="Phone"
-                Width="[33.24pc]"
+                onChange={handleChange}
               />
             </div>
           </form>
         </div>
         <div>
           <CartTotal
-            TitleBtn="PLACE ORDER"
-            onClick={() => {
-              dispatch(fetchCraeteDelivery(form));
-            }}
+            TitleBtn={isPending ? "Loading...." : "PLACE ORDER"}
+            onClick={handleClick}
           />
         </div>
       </div>

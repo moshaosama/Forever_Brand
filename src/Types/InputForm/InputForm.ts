@@ -3,5 +3,5 @@ export interface inputForm {
   Label: string;
   Name: string;
   value?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

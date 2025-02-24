@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 interface CartTotalProps {
   TitleBtn: any;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const CartTotal = ({ TitleBtn, onClick }: CartTotalProps) => {

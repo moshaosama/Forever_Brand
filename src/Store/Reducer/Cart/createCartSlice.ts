@@ -10,7 +10,7 @@ const initialState: any = {
 export const fetchCraeteCart = createAsyncThunk(
   "createCart/fetchCraeteCart",
   async (data: any) => {
-    return await request("http://localhost:8000/addcart", data, "POST");
+    return await request("http://localhost:8000/addcart", "POST", data);
   }
 );
 
