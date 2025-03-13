@@ -5,3 +5,12 @@
   grid-template-columns: repeat(5, 1fr);
   width: 100pc;
 }
+@media (max-width: 640px) {
+  /* أو أي حجم شاشة صغير تريده */
+  .product {
+    margin: 1pc;
+    grid-template-columns: repeat(1, 1fr);
+    width: fit-content;
+    grid-gap: 0px;
+  }
+}

@@ -34,17 +34,6 @@ const Product = () => {
     dispatch(fetchgetCart());
   }, [data.data, dataLength]);
 
-  useEffect(() => {
-    const Image_Product = document.getElementById("Images_Product");
-    const Details = document.getElementById("Details");
-    const imageState = document.getElementById("imageState");
-    imageState?.style?.setProperty("opacity", "100%");
-    imageState?.style?.setProperty("left", "0px");
-    Details?.style?.setProperty("opacity", "100%");
-    Details?.style?.setProperty("left", "0px");
-    Image_Product?.style.setProperty("gap", "10px");
-  }, []);
-
   return (
     <>
       <div className={`${container}`} style={{ marginTop: "40px" }}>
@@ -55,8 +44,7 @@ const Product = () => {
                 <div className="flex max-sm:flex-col-reverse  h-full gap-4 items-start">
                   <div
                     key={el._id}
-                    className="h-full flex flex-col max-sm:flex-row max-sm:w-full gap-20 transition-all duration-1000  max-sm:gap-2"
-                    id="Images_Product"
+                    className="h-full flex flex-col max-sm:flex-row max-sm:w-full max-sm:gap-2"
                   >
                     {el.image.map((el, index) => (
                       <img
@@ -70,10 +58,7 @@ const Product = () => {
                       />
                     ))}
                   </div>
-                  <div
-                    className="h-full opacity-5 relative left-20 transition-all duration-700"
-                    id="imageState"
-                  >
+                  <div className="h-full">
                     <img
                       src={imageState}
                       alt="Image.png"
@@ -81,10 +66,7 @@ const Product = () => {
                     />
                   </div>
                 </div>
-                <div
-                  className="mx-6 relative left-20 transition-all duration-500 opacity-5 max-sm:mx-0 flex flex-col gap-3 items-start"
-                  id="Details"
-                >
+                <div className="mx-6 max-sm:mx-0 flex flex-col gap-3 items-start">
                   <div>
                     <h1 className="text-2xl max-sm:text-lg font-bold mx-3">
                       {el.name}
