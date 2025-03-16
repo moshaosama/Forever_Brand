@@ -40,8 +40,8 @@ const DeliverySec = () => {
 
   return (
     <>
-      <div className={container}>
-        <div>
+      <div className={`${container} max-sm:flex-col`}>
+        <div className="max-sm:mx-5">
           <div className="my-10 flex justify-start">
             <TitleContent
               LeftTitle="DELIVERY"

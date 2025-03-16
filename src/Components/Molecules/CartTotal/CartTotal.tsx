@@ -69,7 +69,7 @@ const CartTotal = ({ TitleBtn, onClick }: CartTotalProps) => {
 
   return (
     <>
-      <div className="w-[30pc] my-16">
+      <div className="w-[30pc] my-16 max-sm:w-[20pc]">
         <div className="w-full flex  justify-start">
           <TitleContent LeftTitle="CART" RightTitle="TOTALS" Active={false} />
         </div>
